@@ -1,0 +1,29 @@
+1. Read the documents: 
+1.0 https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-connect/
+1.1 https://azure.microsoft.com/en-us/documentation/articles/azure-cli-arm-commands/#azure-storage-commands-to-manage-your-storage-objects
+1.2 https://azure.microsoft.com/en-us/documentation/articles/storage-azure-cli/
+1.3 https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/
+1.4 https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/
+
+2. Prepare test environment
+2.1 You will need a Windows Client to run the tests (for both Windows test and Linux test)
+2.1.1 Install PuTTY from: https://the.earth.li/~sgtatham/putty/latest/x86/putty-0.67-installer.msi
+2.1.2 Use PuTTY to ssh to the following linux boxes for testing
+	[USE THIS] Fedora: 10.156.72.33 sdktest User@123
+2.2 You will need some public Azure subscriptions and storage accounts to compare results with, sometimes
+2.3 You will need a MASD or NebulaAzure WOSS/ACS cluster to run test against
+2.4 You will need some WOSS/ACS subscriptions and storage accounts to use in testing (You can create some storage accounts using Account.exe or some other ways)
+2.5 You may need to hack DNS if in a NebulaAzure environment with host style URI used
+
+3. Follow the document 1.0 and 1.1 to run the following scenarios, and record EVERY steps/commands you run and the results you get
+NOTE: the tests need to be run on two platforms separately - run on Windows Platform, run on Linux Platform in PuTTY from Windows Client
+
+[Document 1.0]
+3.1 Use azure login to authenticate interactively
+
+[Document 1.1]
+3.2 Setting the Resource Manager mode
+3.3 azure storage: Commands to manage your Storage objects - EXCLUDE "Storage file" related commands
+3.4 Run "azure storage" and "azure storage <command> --help" to get help and explore more options during test
+
+4. The output should be a document about EVERY test steps and commands you run, and their output and results

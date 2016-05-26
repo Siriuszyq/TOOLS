@@ -1,0 +1,25 @@
+1. Read the documents: 
+1.1 https://azure.microsoft.com/en-us/documentation/articles/storage-powershell-guide-full/
+1.2 https://msdn.microsoft.com/en-us/library/azure/dn806401.aspx
+1.3 https://azure.microsoft.com/en-us/documentation/articles/powershell-install-configure/
+1.4 https://github.com/Azure/azure-powershell
+1.5 https://azure.microsoft.com/en-us/documentation/articles/powershell-azure-resource-manager/
+
+2. Prepare test environment
+2.1 You will need a Windows Client to run the tests
+2.2 You will need some public Azure subscriptions and storage accounts to compare results with, sometimes
+2.3 You will need a MASD or NebulaAzure WOSS/ACS cluster to run test against
+2.4 You will need some WOSS/ACS subscriptions and storage accounts to use in testing (You can create some storage accounts using Account.exe or some other ways)
+2.5 You may need to hack DNS if in a NebulaAzure environment with host style URI used
+
+3. Follow the document 1.1 to run the following scenarios, and record EVERY steps/commands you run and the results you get
+3.1 How to manage storage accounts in Azure
+3.2 How to manage Azure blobs - EXCLUDE "How to copy blobs from a secondary location"
+3.3 How to manage Azure blob snapshots
+3.4 How to manage Azure tables and table entities
+3.5 How to manage Azure queues and queue messages
+3.6 How to set and query storage analytics
+3.7 How to manage Shared Access Signature (SAS) and Stored Access Policy
+3.8 Refer to document 1.2 to try each of the cmdlet
+
+4. The output should be a document about EVERY test steps and commands you run, and their output and results

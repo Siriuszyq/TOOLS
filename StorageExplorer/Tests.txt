@@ -1,0 +1,126 @@
+1. Prepare test client environment
+1.1 Get the tool from https://devdiv.visualstudio.com/DevDiv/Storage%20Explorer/_build?_a=summary&buildId=176327&tab=artifacts
+1.2 Install the tool to Windows or Linux properly
+
+2. Prepare test server environment
+2.1 You will need a MASD or NebulaAzure WOSS/ACS cluster to run test against
+2.2 You will need an AAD account for WOSS/ACS tenant to sign in WOSS/ACS services
+2.3 You will need some WOSS/ACS storage accounts to use in testing (You can create some storage accounts using Account.exe)
+2.4 You may need to hack DNS if in a NebulaAzure environment with host style URI used
+
+3. Follow the scenarios below, and record EVERY steps/commands you run and the results you get (first run on Windows, then run on Linux)
+NOTE: Some cases may not valid now until the tool has some feature improvements like sign-in with AAD to list storage accounts.
+
+3.1 Verify that an AAD account for WOSS/ACS can be used to sign in the tool
+3.2 Verify that all the subscriptions of the signed in AAD account is listed in the tool and refresh works
+3.3 Verify that all the storage accounts of the subscriptions are listed in the tool and refresh works
+3.4 Verify that a storage account can be created successfully in the tool
+3.5 Verify that a storage account can be deleted successfully in the tool
+
+3.6.1 Verify that an external storage account can be attached to the tool successfully
+	1. Go to Microsoft Azure Storage Explorer
+	2. Right click Storage Accounts and select Attach External Storage Account
+	3. Enter the Account name and Account key as the CreateStorageAccount on JUSJINHNCOL1
+	4. Check Use HTTP
+	5. Click OK to attach the external storage account
+	Expected Result: external storage account is attached successfully
+3.6.2 Verify that a storage service can be attached to the tool using SAS successfully
+	1. Right click Storage Accounts and select Attach Service using SAS
+	2. SAS URL?
+3.6.3 Verify that a storage account can be attached to the tool using SAS successfully
+	1. Right click Storage Accounts and select Attach Account using SAS
+	2. Connection String and Account Label?
+
+[NOTE: the following 3.7-3.15 should be verified for accounts of type 3.6.1-3.6.3]
+3.7 Verify that properties of a storage account can be viewed and managed in the tool
+	1. Click storage account and select sdktest2
+	2. Click tables/queues/blob containers
+	3. Click properties and actions to manage storage account or containers
+	Expected Result: properties of a storage account can be viewed and managed in the tool successfully
+3.8 Verify that all the tables/queues/blob containers are listed for a storage account and refresh works
+	1. Click storage account and select sdktest2
+	2. All the tables/queues/blob containers and file shares are listed for the storage account
+	3. Right click sdktest2 and click refresh
+	Expected Result: all the tables/queues/blob containers and file shares are listed for a storage account and refresh works successfully
+3.9 Verify that tables/queues/blob containers can be created successfully
+	1. Click storage account and select sdktest2
+	2. Right click tables/queues/blob containers and click create blob container/create queue/create table
+	Expected Result: tables/queues/blob containers can be created successfully
+3.9.1 Verify that tables can be copied and pasted successfully
+	1. Click storage account and select sdktest2
+	2. Click table containers
+	3. Click the containers had been created
+	4. Click actions and copy table
+	5. Click another storage account and table containers
+	6. Click actions and paste table
+	7. Display "Copied table from 'sdktest2/test1' to 'sdktest1/test1' Copied 0 entities" on Activity Log
+	Expected Result: tables can be copied and pasted successfully
+3.10 Verify that table/queue/blob containers can be deleted successfully
+	1. Click storage account and select sdktest2
+	2. Click table/queue/blob containers
+	3. Click the containers had been created
+	4. Click actions and click delete
+	5. Click yes
+	Expected Result: table/queue/blob containers can be deleted successfully
+3.11 Verify that table/queue/blob containers can be opened and viewed successfully
+	1. Click storage account and select sdktest2
+	2. Click table/queue/blob containers
+	3. Double-click the containers had been created
+	Expected Result: table/queue/blob containers can be opened and viewed successfully
+3.12 Verify that properties of a table/queue/blob container can be viewed and managed successfully
+	1. Click storage account and select sdktest2
+	2. Click table/queue/blob containers
+	3. Click the containers had been created and properties
+	4. URL and type of properties can be viewed
+	Expected Result: properties of a table/queue/blob container can be viewed and managed successfully
+3.13 Verify that table entities can be listed, import, export, edit, select all, customize columns, filtered, added, get SAS, manage access policy, deleted and refreshed successfully
+	1. Click storage account and select sdktest2
+	2. Click table containers and select the containers had been created
+	3. listed
+	4. import
+	5. export
+	6. edit
+	7. select all
+	8. customize columns
+	9. filtered
+	10. added
+	11. get SAS
+	12. manage access policy
+	13. deleted and refreshed
+	
+3.14 Verify that blobs can be listed, filtered, uploaded, downloaded, get SAS, manage access policy, set public access level, open, copy URL, select all, copied, pasted, deleted and refreshed successfully
+	1. Click storage account and select sdktest2
+	2. Click blob containers and select the containers had been created
+	3. Click one blob container, display file list successfully 
+	4. Filter by click name, last modified, blob type, content type and size successfully
+	5. Click uploaded and choose upload files, then select files from local and click upload, display Uploading 1 blob from 'C:\Users\v-yiqz\Desktop\' to 'test1' 1 completed
+	6. Click downloaded and display Downloading 1 blob from 'test1' to 'C:\Users\v-yiqz\Desktop\' 1 completed
+	7. Click actions or right click a file and click Get Shared Access Signature, display successfully
+	8. Click actions and click Manage Access Policies, than add access policies and click save. 
+	9. Click actions and click Set Public Access Level then choose the access level successfully
+	10. Double-click file and display Opening 1 blob from 'test1' (downloading to 'C:\Users\v-yiqz\AppData\Local\Temp\5') 1 completed
+	11. Click copy URL and paste http://sdktest2.blob.core.windows.net/test1/Test.txt to clipboard successfully
+	12. Click select all, all files are selected successfully
+	13. Click copy blob container
+	14. Click another blob container and click paste blob container, 
+	display Copying 1 blob from 'http://sdktest2.blob.core.windows.net/test1' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed, 1 error(s)
+	but if the blob container is empty
+	display Copying 0 blobs from 'http://sdktest2.blob.core.windows.net/test2' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed
+	15. Click deleted and display Deleting 1 blob 1 completed
+	16. Use AzCopy to upload files and click refresh, display list successfully
+
+3.15 Verify that queue messages can be listed, added, viewed, dequeued, select all, get SAS, manage access policy, deleted, cleared and refreshed successfully
+	1. Click storage account and select sdktest2
+	2. Click queue containers and select the containers had been created
+	3. listed
+	4. added
+	5. viewed
+	6. dequeued
+	7. select all
+	8. get SAS
+	9. manage access policy
+	10. deleted
+	11. cleared and refreshed
+
+
+4. The output should be document about EVERY test steps and commands you run, and their output and results

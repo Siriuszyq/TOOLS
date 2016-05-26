@@ -1,0 +1,39 @@
+1. Prepare test client environment
+1.1 Install VS2015 Enterprise
+1.2 Install Azure SDK for VS2015
+1.3 Open VS2015, you should be able to find two add-ons for storage management
+1.3.1 View -> Cloud Explorer -> Storage Accounts (this is our P0)
+1.3.2 View -> Server Explorer -> Azure -> Storage (this is our P1)
+
+2. Prepare test server environment
+2.1 You will need a MASD or NebulaAzure WOSS/ACS cluster to run test against
+2.2 You will need an AAD account for WOSS/ACS tenant to sign in WOSS/ACS services
+2.3 You will need some WOSS/ACS storage accounts to use in testing (You can create some storage accounts using Account.exe or from the VS2015 tools)
+2.4 You may need to hack DNS if in a NebulaAzure environment with host style URI used
+
+3. Follow the scenarios below, and record EVERY steps/commands you run and the results you get (first run on Cloud Explorer, then Server Explorer)
+NOTE: Some cases may only valid for one tool, not the other.
+3.1 Verify that an AAD account for WOSS/ACS can be used to sign in Cloud Explorer or Server Explorer
+3.2 Verify that all the subscriptions of the signed in AAD account is listed in the tool and refresh works
+3.3 Verify that all the storage accounts of the subscriptions are listed in the tool and refresh works
+3.4 Verify that a storage account can be created successfully in the tool
+3.5 Verify that a storage account can be deleted successfully in the tool
+3.6 Verify that an external storage account can be added to the tool successfully
+3.7 Verify that properties of a storage account can be viewed and managed in the tool
+3.8 Verify that all the tables/queues/blob containers are listed for a storage account and refresh works
+3.9 Verify that tables/queues/blob containers can be created successfully
+	Blob: 
+	1. Go to Server Exploer->Azure->Storage node
+	2. Select a storage account and Blobs node
+	3. Right click Blobs node and select create a blob container
+	4. Enter a name for the blob container
+	5. Click OK to create the container
+	Expected Result: a blob container is created successfully
+3.10 Verify that table/queue/blob containers can be deleted successfully
+3.11 Verify that table/queue/blob containers can be opened and viewed successfully
+3.12 Verify that properties of a table/queue/blob container can be viewed and managed successfully
+3.13 Verify that table entities can be listed, filtered, added, deleted and refreshed successfully
+3.14 Verify that blobs can be listed, filtered, uploaded, downloaded, deleted and refreshed successfully
+3.15 Verify that queue messages can be listed, added, deleted, cleared and refreshed successfully
+
+4. The output should be document about EVERY test steps and commands you run, and their output and results
