@@ -9,7 +9,8 @@
 
 3. Follow the document to run the following scenarios, and record EVERY steps/commands you run and the results you get
 3.1 Blob: Download - EXCLUDE "Download single blob from secondary region"
-	Download all blobs
+	
+Download all blobs
 	1. Open Microsoft Azure Storage command line
 	2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S
 	3. Display: Finished 2 of total 2 file(s).
@@ -22,7 +23,7 @@
 	Elapsed time:            00.00:00:02
 	Expected Result: Download all blobs successfully
 
-	Download single blob
+Download single blob
 	1. Open Microsoft Azure Storage command line
 	2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:"Test.txt"
 	3. Display: Finished 1 of total 1 file(s).
@@ -35,7 +36,7 @@
 	Elapsed time:            00.00:00:02
 	Expected Result: Download single blob successfully
 
-	Download blobs with specified prefix
+Download blobs with specified prefix
 	1. Open Microsoft Azure Storage command line
 	2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:T /S
 	3. Import: y
@@ -49,14 +50,22 @@
 	Elapsed time:            00.00:00:09
 	Expected Result: Download blobs with specified prefix successfully
 
-	Set the last-modified time of exported files to be same as the source blobs
+Set the last-modified time of exported files to be same as the source blobs
 	1. Open Microsoft Azure Storage command line
 	2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /MT
+	3. Display: [WARNING] No file is listed, please specify recursive mode option /S or file pattern option /Pattern.
+	Finished 0 of total 0 file(s).
+	[2016/05/26 00:25:22] Transfer summary:
+	-----------------
+	Total files transferred: 0
+	Transfer successfully:   0
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:00
 
-
-C:\Program Files (x86)\Microsoft SDKs\Azure>
 3.2 Blob: Upload
-	Upload single file
+
+Upload single file
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:"tests.txt"
 	3. Import: y
@@ -70,7 +79,7 @@ C:\Program Files (x86)\Microsoft SDKs\Azure>
 	Elapsed time:            00.00:00:04
 	Expected Result: Upload single file successfully
 	
-	Upload all files
+Upload all files
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /s
 	3. Import: y
@@ -84,8 +93,115 @@ C:\Program Files (x86)\Microsoft SDKs\Azure>
 	Elapsed time:            00.00:00:11
 	Expected Result: Upload all files successfully
 	
-3.3 Blob: Copy - EXCLUDE "Copy single blob from secondary region to primary region"
+Upload single file to virtual directory
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1/vd /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /pattern:tests.txt
+	3. Display: AzCopy has uploaded the file to include the virtual directory in its name (vd/Tests.txt) since the specified virtual directory does not exist
+	Finished 1 of total 1 file(s).
+	[2016/05/26 00:16:51] Transfer summary:
+	-----------------
+	Total files transferred: 1
+	Transfer successfully:   1
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:03
+	Expected Result: Upload single file to virtual directory successfully
+
+Upload files matching specified pattern
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:t*
+	3. Display: Finished 1 of total 1 file(s).
+	[2016/05/26 00:34:26] Transfer summary:
+	-----------------
+	Total files transferred: 1
+	Transfer successfully:   1
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:12
+
+Specify the MIME content type of a destination blob
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:ab /SetContentType:video/mp4
+	3. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:ab /SetContentType
+	4. Both successfully and display: Finished 0 of total 0 file(s).
+	[2016/05/26 00:43:25] Transfer summary:
+	-----------------
+	Total files transferred: 0
+	Transfer successfully:   0
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:01
+
+??? 3.3 Blob: Copy - EXCLUDE "Copy single blob from secondary region to primary region"
+
+? Copy single blob within Storage account
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest2.blob.core.windows.net/test3 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:Tests.txt
+	3. Display: [ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
+	Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+	RequestId:1d5d14b9-7af3-0b9e-570c-c7a90b2b00fb
+	Time:2016-05-26T07:59:32.8700957Z
+	Finished 0 of total 1 file(s).
+	[2016/05/26 00:59:33] Transfer summary:
+	-----------------
+	Total files transferred: 1
+	Transfer successfully:   0
+	Transfer skipped:        0
+	Transfer failed:         1
+	Elapsed time:            00.00:00:03
+
+? Copy single blob across Storage accounts
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest1.blob.core.windows.net/test4 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:Tests.txt
+	3. Import: y
+	4. Display: [ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
+	Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+	RequestId:01ed6ff4-7b9d-0317-5c2d-52a8fa75cc44
+	Time:2016-05-26T08:06:08.5722253Z
+	Finished 0 of total 1 file(s).
+	[2016/05/26 01:06:09] Transfer summary:
+	-----------------
+	Total files transferred: 1
+	Transfer successfully:   0
+	Transfer skipped:        0
+	Transfer failed:         1
+	Elapsed time:            00.00:00:12
+
+
+? Copy single blob and its snapshots across Storage accounts
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest1.blob.core.windows.net/test4 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:Tests.txt /Snapshot
+	3. Import: y
+	4. Display: [ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
+	Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+	RequestId:52e5914d-0b04-0611-4a98-495b52578dfc
+	Time:2016-05-26T08:11:53.2975647Z
+	Finished 0 of total 1 file(s).
+	[2016/05/26 01:11:53] Transfer summary:
+	-----------------
+	Total files transferred: 1
+	Transfer successfully:   0
+	Transfer skipped:        0
+	Transfer failed:         1
+	Elapsed time:            00.00:00:06
+
+Synchronously copy blobs across Storage accounts
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest1.blob.core.windows.net/test2 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:ab /Snapshot
+	3. Import: y
+	4. Display: Finished 0 of total 0 file(s).
+	[2016/05/26 01:23:22] Transfer summary:
+	-----------------
+	Total files transferred: 0
+	Transfer successfully:   0
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:03
+
 3.4 Table: Export
+
+
+
 3.5 Table: Import
 3.6 Other AzCopy features - please try them to see if work or not; EXCLUDE "Run AzCopy against Azure Storage Emulator" 
 3.7 AzCopy Parameters - read these carefully, try every parameter in your command (You may check some articles in Next Steps section), 

@@ -101,11 +101,11 @@ NOTE: Some cases may not valid now until the tool has some feature improvements 
 	10. Double-click file and display Opening 1 blob from 'test1' (downloading to 'C:\Users\v-yiqz\AppData\Local\Temp\5') 1 completed
 	11. Click copy URL and paste http://sdktest2.blob.core.windows.net/test1/Test.txt to clipboard successfully
 	12. Click select all, all files are selected successfully
-	13. Click copy blob container
-	14. Click another blob container and click paste blob container, 
-	display Copying 1 blob from 'http://sdktest2.blob.core.windows.net/test1' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed, 1 error(s)
-	but if the blob container is empty
-	display Copying 0 blobs from 'http://sdktest2.blob.core.windows.net/test2' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed
+???13. Click copy blob container
+???14. Click another blob container and click paste blob container, 
+display: Copying 1 blob from 'http://sdktest2.blob.core.windows.net/test1' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed, 1 error(s)
+but if the blob container is empty, the blob container copy and paste successfully
+display: Copying 0 blobs from 'http://sdktest2.blob.core.windows.net/test2' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed
 	15. Click deleted and display Deleting 1 blob 1 completed
 	16. Use AzCopy to upload files and click refresh, display list successfully
 
