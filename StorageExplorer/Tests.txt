@@ -78,7 +78,7 @@ NOTE: Some cases may not valid now until the tool has some feature improvements 
 	2. Click table containers and select the containers had been created
 	3. listed
 	4. import
-	5. export
+	5. Click export and select the path and file name then click save, display Exported entities in table 'sdktest2/test2' to 'C:\Users\v-yiqz\Documents\test2.typed.csv' 0 of 0 entities exported successfully
 	6. edit
 	7. select all
 	8. customize columns
@@ -101,11 +101,11 @@ NOTE: Some cases may not valid now until the tool has some feature improvements 
 	10. Double-click file and display Opening 1 blob from 'test1' (downloading to 'C:\Users\v-yiqz\AppData\Local\Temp\5') 1 completed
 	11. Click copy URL and paste http://sdktest2.blob.core.windows.net/test1/Test.txt to clipboard successfully
 	12. Click select all, all files are selected successfully
-???13. Click copy blob container
-???14. Click another blob container and click paste blob container, 
-display: Copying 1 blob from 'http://sdktest2.blob.core.windows.net/test1' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed, 1 error(s)
-but if the blob container is empty, the blob container copy and paste successfully
-display: Copying 0 blobs from 'http://sdktest2.blob.core.windows.net/test2' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed
+	[BUG]13. Click copy blob container
+	[BUG]14. Click another blob container and click paste blob container, 
+		display: Copying 1 blob from 'http://sdktest2.blob.core.windows.net/test1' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed, 1 error(s)
+		but if the blob container is empty, the blob container copy and paste successfully
+		display: Copying 0 blobs from 'http://sdktest2.blob.core.windows.net/test2' to 'http://sdktest2.blob.core.windows.net/test2' 0 completed
 	15. Click deleted and display Deleting 1 blob 1 completed
 	16. Use AzCopy to upload files and click refresh, display list successfully
 
