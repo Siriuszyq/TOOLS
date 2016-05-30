@@ -132,9 +132,9 @@ Specify the MIME content type of a destination blob
 	Transfer failed:         0
 	Elapsed time:            00.00:00:01
 
-3.3 Blob: Copy - EXCLUDE "Copy single blob from secondary region to primary region"
+??? 3.3 Blob: Copy - EXCLUDE "Copy single blob from secondary region to primary region"
 
-[BUG]Copy single blob within Storage account
+? Copy single blob within Storage account
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest2.blob.core.windows.net/test3 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:Tests.txt
 	3. Display: [ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
@@ -150,7 +150,7 @@ Specify the MIME content type of a destination blob
 	Transfer failed:         1
 	Elapsed time:            00.00:00:03
 
-[BUG]Copy single blob across Storage accounts
+? Copy single blob across Storage accounts
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest1.blob.core.windows.net/test4 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:Tests.txt
 	3. Import: y
@@ -168,7 +168,7 @@ Specify the MIME content type of a destination blob
 	Elapsed time:            00.00:00:12
 
 
-[BUG]Copy single blob and its snapshots across Storage accounts
+? Copy single blob and its snapshots across Storage accounts
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest1.blob.core.windows.net/test4 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:Tests.txt /Snapshot
 	3. Import: y
@@ -200,150 +200,12 @@ Synchronously copy blobs across Storage accounts
 
 3.4 Table: Export
 
-Export table
-	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:http://sdktest2.table.core.windows.net/test2 /Dest:C:\Users\v-yiqz\Documents /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA==
-	3.Display: [2016/05/29 19:55:57] Manifest file for this export operation is: "sdktest2_test2_20160530T025557.8986497Z.manifest".
-		[2016/05/29 19:55:59] All table entities have been downloaded.
-		[2016/05/29 19:55:59] Validating the integrity of data file list...
-		[2016/05/29 19:55:59] Validation of data file list passed.
-		[2016/05/29 19:55:59]
-		Transfer summary:
-		-----------------
-		Total entities transferred: 0
-		Elapsed time:               00.00:00:03
 
-Set the manifest file name
-	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:http://sdktest2.table.core.windows.net/test2 /Dest:C:\Users\v-yiqz\Documents /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Manifest:sdktest2tabletest2.manifest
-	3.Display: [2016/05/29 20:09:41] Manifest file for this export operation is: "sdktest2tabletest2.manifest".
-		[2016/05/29 20:09:43] All table entities have been downloaded.
-		[2016/05/29 20:09:43] Validating the integrity of data file list...
-		[2016/05/29 20:09:43] Validation of data file list passed.
-		[2016/05/29 20:09:43]
-		Transfer summary:
-		-----------------
-		Total entities transferred: 0
-		Elapsed time:               00.00:00:03
-
-[BUG]Split export into multiple files
-	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:http://sdktest2.table.core.windows.net/test2 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S /SplitSize:100
-	3.Display: [ERROR] The syntax of the command is incorrect. The "S" parameter is invalid when the source or the destination is Azure table location.
-
-Export table to JSON or CSV data file format
-	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:http://sdktest2.table.core.windows.net/test2 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /PayloadFormat:CSV
-	3.Display: [2016/05/29 23:40:07] Manifest file for this export operation is: "sdktest2_test2_20160530T064007.3973791Z.manifest".
-		[2016/05/29 23:40:08] All table entities have been downloaded.
-		[2016/05/29 23:40:08] Validating the integrity of data file list...
-		[2016/05/29 23:40:08] Validation of data file list passed.
-		[2016/05/29 23:40:08]
-		Transfer summary:
-		-----------------
-		Total entities transferred: 0
-		Elapsed time:               00.00:00:03
-
-Export table entities concurrently
-	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:http://sdktest2.table.core.windows.net/test2 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /PKRS:"aa#bb"
-	3.Display: [2016/05/29 23:44:18] The table is split into 3 partition key ranges to be downloaded concurrently:
-		[2016/05/29 23:44:18] (0) Partition Key < "aa".
-		[2016/05/29 23:44:18] (1) "aa" <= Partition Key < "bb".
-		[2016/05/29 23:44:18] (2) Partition Key >= "bb".
-		[2016/05/29 23:44:19] Manifest file for this export operation is: "sdktest2_test2_20160530T064419.8249997Z.manifest".
-		[2016/05/29 23:44:21] Finished downloading a partition key range: Partition Key < "aa"; 1 of 3 partition key ranges have been downloaded.
-		[2016/05/29 23:44:21] Finished downloading a partition key range: "aa" <= Partition Key < "bb"; 2 of 3 partition key ranges have been downloaded.
-		[2016/05/29 23:44:21] Finished downloading a partition key range: Partition Key >= "bb"; 3 of 3 partition key ranges have been downloaded.
-		[2016/05/29 23:44:21] All table entities have been downloaded.
-		[2016/05/29 23:44:21] Validating the integrity of data file list...
-		[2016/05/29 23:44:21] Validation of data file list passed.
-		[2016/05/29 23:44:21]
-		Transfer summary:
-		-----------------
-		Total entities transferred: 0
-		Elapsed time:               00.00:00:03
-
-Export table to blob
-	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:http://sdktest2.table.core.windows.net/test2 /Dest:http://sdktest2.blob.core.windows.net/test4 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA==
-	3.Display: [2016/05/29 23:49:29] Manifest file for this export operation is: "sdktest2_test2_20160530T064929.7228695Z.manifest".
-		[2016/05/29 23:49:30] All table entities have been downloaded.
-		[2016/05/29 23:49:33] Validating the integrity of data file list...
-		[2016/05/29 23:49:34] Validation of data file list passed.
-		[2016/05/29 23:49:34]
-		Transfer summary:
-		-----------------
-		Total entities transferred: 0
-		Elapsed time:               00.00:00:07
 
 3.5 Table: Import
-
-Import table
-	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest /Dest:http://sdktest2.table.core.windows.net/test2 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Manifest:"sdktest2_test2_20160530T060109.3424028Z.manifest" /EntityOperation:InsertOrReplace
-	3.Display: [2016/05/29 20:31:12] Validating the integrity of data file list...
-		[2016/05/29 20:31:12] Validation of data file list passed.
-		[2016/05/29 20:31:12]
-		Transfer summary:
-		-----------------
-		Total entities transferred: 0
-		Elapsed time:               00.00:00:02
-
-Import entities to table using blobs
-	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test3 /Dest:http://sdktest2.table.core.windows.net/test2 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Manifest:"sdktest2_test2_20160530T060109.3424028Z.manifest" /EntityOperation:InsertOrReplace
-	3.Display: [2016/05/29 23:33:54] Validating the integrity of data file list...
-		[2016/05/29 23:33:54] Validation of data file list passed.
-		[2016/05/29 23:33:54]
-		Transfer summary:
-		-----------------
-		Total entities transferred: 0
-		Elapsed time:               00.00:00:05
-
 3.6 Other AzCopy features - please try them to see if work or not; EXCLUDE "Run AzCopy against Azure Storage Emulator" 
-
-Only copy data that doesn't exist in the destination
-
-
-
-Use a response file to specify command-line parameters
-
-
-
-Use multiple response files to specify command-line parameters
-
-
-
-Specify a shared access signature (SAS)
-
-
-
-Journal file folder
-
-
-
-Generate a log file
-
-
-
-Specify the number of concurrent operations to start
-
-
-
-
 3.7 AzCopy Parameters - read these carefully, try every parameter in your command (You may check some articles in Next Steps section), 
     for example: /BlobType, /CheckMD5, /Snapshot, /L, /PKRS, /SplitSize, /Manifest, /EntityOperation, /SyncCopy, /SetContentType, /PayloadFormat, ......
-
-
-
-
-
-
-
-
-
-
 3.8 Run "AzCopy /?" to get help and explore more AzCopy options during test
 
 4. The output should be document about EVERY test steps and commands you run, and their output and results
