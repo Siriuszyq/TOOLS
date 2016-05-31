@@ -228,8 +228,18 @@ Set the manifest file name
 
 [BUG]Split export into multiple files
 	1.Open Microsoft Azure Storage command line
-	2.Import: azcopy /Source:http://sdktest2.table.core.windows.net/test2 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S /SplitSize:100
-	3.Display: [ERROR] The syntax of the command is incorrect. The "S" parameter is invalid when the source or the destination is Azure table location.
+	2.Import: azcopy /Source:http://jusjinsdkjava.table.core.windows.net/CAPStable2adb7055fcb14c2d800fe8eb8ad89798 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest2 /SourceKey:ebqZSCEJXO11IyBxJKpIG3GZHj37kE+HsRPAWyQnlY8tg3QkLY7ckBQyUjuWoMiKQRlIzGU27kxeJJnNhhpBtQ== /S /SplitSize:100
+	3.Display: [2016/05/31 00:56:08][ERROR] The syntax of the command is incorrect. The "S" parameter is invalid when the source or the destination is Azure table location.
+	IF without /S, it successfully: azcopy /Source:http://jusjinsdkjava.table.core.windows.net/CAPStable2adb7055fcb14c2d800fe8eb8ad89798 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest2 /SourceKey:ebqZSCEJXO11IyBxJKpIG3GZHj37kE+HsRPAWyQnlY8tg3QkLY7ckBQyUjuWoMiKQRlIzGU27kxeJJnNhhpBtQ== /SplitSize:100
+	4.Display: [2016/05/31 01:31:29] Manifest file for this export operation is: "jusjinsdkjava_CAPStable2adb7055fcb14c2d800fe8eb8ad89798_20160531T083129.3064315Z.manifest".
+		[2016/05/31 01:31:29] All table entities have been downloaded.
+		[2016/05/31 01:31:29] Validating the integrity of data file list...
+		[2016/05/31 01:31:29] Validation of data file list passed.
+			[2016/05/31 01:31:29]
+		Transfer summary:
+		-----------------
+		Total entities transferred: 0
+		Elapsed time:               00.00:00:01
 
 Export table to JSON or CSV data file format
 	1.Open Microsoft Azure Storage command line
@@ -303,9 +313,92 @@ Import entities to table using blobs
 
 3.6 Other AzCopy features - please try them to see if work or not; EXCLUDE "Run AzCopy against Azure Storage Emulator" 
 
-Only copy data that doesn't exist in the destination
+[BUG]Only copy data that doesn't exist in the destination
+	1.Open Microsoft Azure Storage command line
+	2.Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest2 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S /XN
+	3.Display: Finished 4 of total 4 file(s).
+		[2016/05/31 01:23:16] Transfer summary:
+		-----------------
+		Total files transferred: 4
+		Transfer successfully:   4
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:14
+	4.Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S /XO
+	5.Display: Finished 4 of total 4 file(s).
+		[2016/05/31 01:26:54] Transfer summary:
+		-----------------
+		Total files transferred: 4
+		Transfer successfully:   4
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:18
+	[BUG]6.Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:http://sdktest2.blob.core.windows.net/test2 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S /XO
+	7.Display: [2016/05/31 01:39:08][ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
+		Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+		RequestId:61ae02b1-bce6-00c6-769a-68b3cf1b7c1a
+		Time:2016-05-31T08:39:08.3838119Z
+		[2016/05/31 01:39:08][ERROR] Test.txt: The remote server returned an error: (403) Forbidden.
+		Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+		RequestId:dd684323-f6bf-0105-6f97-38ef2b3109bd
+		Time:2016-05-31T08:39:08.3848151Z
+		[2016/05/31 01:39:08][ERROR] StorageExplorer.exe: The remote server returned an error: (403) Forbidden.
+		Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+		RequestId:0ddb6222-fef6-0d77-67f9-181972cf7e2c
+		Time:2016-05-31T08:39:08.3828130Z
+		[2016/05/31 01:39:08][ERROR] vd/Tests.txt: The remote server returned an error: (403) Forbidden.
+		Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+		RequestId:d44f224c-243a-0889-4bd5-3b9998e8c363
+		Time:2016-05-31T08:39:08.3848151Z
+		Finished 0 of total 4 file(s).
+		[2016/05/31 01:39:08] Transfer summary:
+		-----------------
+		Total files transferred: 4
+		Transfer successfully:   0
+		Transfer skipped:        0
+		Transfer failed:         4
+		Elapsed time:            00.00:00:03
+	[BUG]8.Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:http://sdktest2.blob.core.windows.net/test2 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S /XN
+	9.Display: [2016/05/31 01:39:37][ERROR] vd/Tests.txt: The remote server returned an error: (403) Forbidden.
+		Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+		RequestId:d8ffb3a5-cb90-0825-7392-7a2dce2fdee0
+		Time:2016-05-31T08:39:37.3957813Z
+		[2016/05/31 01:39:37][ERROR] StorageExplorer.exe: The remote server returned an error: (403) Forbidden.
+		Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+		RequestId:06d1afb4-1e69-0702-76ab-34bb1be8673b
+		Time:2016-05-31T08:39:37.3937800Z
+		[2016/05/31 01:39:37][ERROR] Test.txt: The remote server returned an error: (403) Forbidden.
+		Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+		RequestId:15bb2ca7-7d7e-0bc8-4a12-0df2b11e7aaf
+		Time:2016-05-31T08:39:37.3947872Z
+		Finished 0 of total 3 file(s).
+		[2016/05/31 01:39:37] Transfer summary:
+		-----------------
+		Total files transferred: 3
+		Transfer successfully:   0
+		Transfer skipped:        0
+		Transfer failed:         3
+		Elapsed time:            00.00:00:05
+BUT use the against public Azure account it successfully
+	10.Import: azcopy /Source:http://jusjinsdkjava.blob.core.windows.net/container1d0be66ffc9d48f0b0e8f122d9400168 /Dest:http://jusjinsdkjava.blob.core.windows.net/container1834a37b6b1e47a9832725982bf93a5a /SourceKey:ebqZSCEJXO11IyBxJKpIG3GZHj37kE+HsRPAWyQnlY8tg3QkLY7ckBQyUjuWoMiKQRlIzGU27kxeJJnNhhpBtQ== /DestKey:ebqZSCEJXO11IyBxJKpIG3GZHj37kE+HsRPAWyQnlY8tg3QkLY7ckBQyUjuWoMiKQRlIzGU27kxeJJnNhhpBtQ== /S /XO
+	11.Display: Finished 1 of total 1 file(s).
+		[2016/05/31 01:52:27] Transfer summary:
+		-----------------
+		Total files transferred: 1
+		Transfer successfully:   1
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:01
 
-
+	12.Import: azcopy /Source:http://jusjinsdkjava.blob.core.windows.net/container1d0be66ffc9d48f0b0e8f122d9400168 /Dest:http://jusjinsdkjava.blob.core.windows.net/container1834a37b6b1e47a9832725982bf93a5a /SourceKey:ebqZSCEJXO11IyBxJKpIG3GZHj37kE+HsRPAWyQnlY8tg3QkLY7ckBQyUjuWoMiKQRlIzGU27kxeJJnNhhpBtQ== /DestKey:ebqZSCEJXO11IyBxJKpIG3GZHj37kE+HsRPAWyQnlY8tg3QkLY7ckBQyUjuWoMiKQRlIzGU27kxeJJnNhhpBtQ== /S /XN
+	13.Display: Finished 1 of total 1 file(s).
+		[2016/05/31 01:53:37] Transfer summary:
+		-----------------
+		Total files transferred: 1
+		Transfer successfully:   1
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:01
 
 Use a response file to specify command-line parameters
 

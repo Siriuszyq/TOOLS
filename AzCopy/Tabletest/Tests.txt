@@ -1,0 +1,121 @@
+1. Read the document: https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/
+
+2. Prepare test environment
+2.1 You will need a Windows Client to run the tests
+2.2 You will need some public Azure storage accounts to compare results with, sometimes
+2.3 You will need a MASD or NebulaAzure WOSS/ACS cluster to run test against
+2.4 You will need some WOSS/ACS storage accounts to use in testing (You can create some storage accounts using Account.exe or some other ways)
+2.5 You may need to hack DNS if in a NebulaAzure environment with host style URI used
+
+3. Follow the document to run the following scenarios, and record EVERY steps/commands you run and the results you get
+3.1 Blob: Download - EXCLUDE "Download single blob from secondary region"
+	Download all blobs
+	1. Open Microsoft Azure Storage command line
+	2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S
+	3. Display: Finished 2 of total 2 file(s).
+	[2016/05/25 19:33:50] Transfer summary:
+	-----------------
+	Total files transferred: 2
+	Transfer successfully:   2
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:02
+	Expected Result: Download all blobs successfully
+
+	Download single blob
+	1. Open Microsoft Azure Storage command line
+	2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:"Test.txt"
+	3. Display: Finished 1 of total 1 file(s).
+	[2016/05/25 19:42:03] Transfer summary:
+	-----------------
+	Total files transferred: 1
+	Transfer successfully:   1
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:02
+	Expected Result: Download single blob successfully
+
+	Download blobs with specified prefix
+	1. Open Microsoft Azure Storage command line
+	2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:T /S
+	3. Import: y
+	4. Display: Finished 2 of total 2 file(s).
+	[2016/05/25 19:56:05] Transfer summary:
+	-----------------
+	Total files transferred: 2
+	Transfer successfully:   2
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:09
+	Expected Result: Download blobs with specified prefix successfully
+
+???Set the last-modified time of exported files to be same as the source blobs
+1. Open Microsoft Azure Storage command line
+2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /MT
+3. Display: [WARNING] No file is listed, please specify recursive mode option /S or file pattern option /Pattern.
+Finished 0 of total 0 file(s).
+[2016/05/26 00:25:22] Transfer summary:
+-----------------
+Total files transferred: 0
+Transfer successfully:   0
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:00
+
+C:\Program Files (x86)\Microsoft SDKs\Azure>
+3.2 Blob: Upload
+	Upload single file
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:"tests.txt"
+	3. Import: y
+	4. Display: Finished 1 of total 1 file(s).
+	[2016/05/25 02:34:45] Transfer summary:
+	-----------------
+	Total files transferred: 1
+	Transfer successfully:   1
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:04
+	Expected Result: Upload single file successfully
+	
+	Upload all files
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /s
+	3. Import: y
+	4. Display: Finished 2 of total 2 file(s).
+	[2016/05/25 18:40:15] Transfer summary:
+	-----------------
+	Total files transferred: 2
+	Transfer successfully:   2
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:11
+	Expected Result: Upload all files successfully
+	
+	Upload single file to virtual directory
+	1. Open Microsoft Azure Storage command line
+	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1/vd /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /pattern:tests.txt
+	3. Display: AzCopy has uploaded the file to include the virtual directory in its name (vd/Tests.txt) since the specified virtual directory does not exist
+	Finished 1 of total 1 file(s).
+	[2016/05/26 00:16:51] Transfer summary:
+	-----------------
+	Total files transferred: 1
+	Transfer successfully:   1
+	Transfer skipped:        0
+	Transfer failed:         0
+	Elapsed time:            00.00:00:03
+	Expected Result: Upload single file to virtual directory successfully
+
+	Upload files matching specified pattern
+
+	Specify the MIME content type of a destination blob
+
+3.3 Blob: Copy - EXCLUDE "Copy single blob from secondary region to primary region"
+3.4 Table: Export
+3.5 Table: Import
+3.6 Other AzCopy features - please try them to see if work or not; EXCLUDE "Run AzCopy against Azure Storage Emulator" 
+3.7 AzCopy Parameters - read these carefully, try every parameter in your command (You may check some articles in Next Steps section), 
+    for example: /BlobType, /CheckMD5, /Snapshot, /L, /PKRS, /SplitSize, /Manifest, /EntityOperation, /SyncCopy, /SetContentType, /PayloadFormat, ......
+3.8 Run "AzCopy /?" to get help and explore more AzCopy options during test
+
+4. The output should be document about EVERY test steps and commands you run, and their output and results
