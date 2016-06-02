@@ -39,8 +39,9 @@ Download single blob
 Download blobs with specified prefix
 	1. Open Microsoft Azure Storage command line
 	2. Import: AzCopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Desktop /Sourcekey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:T /S
-	3. Import: y
-	4. Display: Finished 2 of total 2 file(s).
+	3. Overwrite the journal file?
+	4. Import: y
+	5. Display: Finished 2 of total 2 file(s).
 	[2016/05/25 19:56:05] Transfer summary:
 	-----------------
 	Total files transferred: 2
@@ -68,8 +69,9 @@ Set the last-modified time of exported files to be same as the source blobs
 Upload single file
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:"tests.txt"
-	3. Import: y
-	4. Display: Finished 1 of total 1 file(s).
+	3. Overwrite the journal file?	
+	4. Import: y
+	5. Display: Finished 1 of total 1 file(s).
 	[2016/05/25 02:34:45] Transfer summary:
 	-----------------
 	Total files transferred: 1
@@ -82,8 +84,9 @@ Upload single file
 Upload all files
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy /Dest:http://sdktest2.blob.core.windows.net/test1 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /s
-	3. Import: y
-	4. Display: Finished 2 of total 2 file(s).
+	3. Overwrite the journal file?
+	4. Import: y
+	5. Display: Finished 2 of total 2 file(s).
 	[2016/05/25 18:40:15] Transfer summary:
 	-----------------
 	Total files transferred: 2
@@ -153,8 +156,9 @@ Specify the MIME content type of a destination blob
 [BUG]Copy single blob across Storage accounts
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest1.blob.core.windows.net/test4 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:Tests.txt
-	3. Import: y
-	4. Display: [ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
+	3. Overwrite the journal file?
+	4. Import: y
+	5. Display: [ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
 	Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
 	RequestId:01ed6ff4-7b9d-0317-5c2d-52a8fa75cc44
 	Time:2016-05-26T08:06:08.5722253Z
@@ -171,8 +175,9 @@ Specify the MIME content type of a destination blob
 [BUG]Copy single blob and its snapshots across Storage accounts
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest1.blob.core.windows.net/test4 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:Tests.txt /Snapshot
-	3. Import: y
-	4. Display: [ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
+	3. Overwrite the journal file?
+	4. Import: y
+	5. Display: [ERROR] Tests.txt: The remote server returned an error: (403) Forbidden.
 	Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
 	RequestId:52e5914d-0b04-0611-4a98-495b52578dfc
 	Time:2016-05-26T08:11:53.2975647Z
@@ -188,8 +193,9 @@ Specify the MIME content type of a destination blob
 Synchronously copy blobs across Storage accounts
 	1. Open Microsoft Azure Storage command line
 	2. Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test2 /Dest:http://sdktest1.blob.core.windows.net/test2 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Pattern:ab /Snapshot
-	3. Import: y
-	4. Display: Finished 0 of total 0 file(s).
+	3. Overwrite the journal file?
+	4. Import: y
+	5. Display: Finished 0 of total 0 file(s).
 	[2016/05/26 01:23:22] Transfer summary:
 	-----------------
 	Total files transferred: 0
@@ -458,25 +464,81 @@ Use multiple response files to specify command-line parameters
 		Elapsed time:            00.00:00:15
 
 Specify a shared access signature (SAS)
-
-
+	1.Open Microsoft Azure Storage command line
+	2.Import: azcopy /Source:http://sdktest2.blob.core.windows.net/test1 /Dest:http://sdktest2.blob.core.windows.net/test2 /SourceSAS: /DestSAS: /Pattern:test.txt
+		AzCopy /Source:http://sdktest2.blob.core.windows.net/test1/?SourceSASToken /Dest:C:\myfolder /S
+	What's SourceSAS and DestSAS?
 
 Journal file folder
+	Use the default Location for the journal file:
+	1.Open Microsoft Azure Storage command line
+	2.Import: AzCopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest /Dest:http://sdktest2.blob.core.windows.net/test3 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Z
+	3.Do you want to overwrite the journal to start a new operation?
+	4.Import: y
+	5.Display: Finished 9 of total 9 file(s).
+		[2016/06/02 01:30:12] Transfer summary:
+		-----------------
+		Total files transferred: 9
+		Transfer successfully:   9
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:21
 
-
+	Specify a custom location for the journal file:
+	1.Open Microsoft Azure Storage command line
+	2.Import: AzCopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest2 /Dest:http://sdktest2.blob.core.windows.net/test4 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /Z:C:\Users\v-yiqz\AppData\Local\Microsoft\Azure\AzCopy
+	3.Display: Finished 4 of total 4 file(s).
+		[2016/06/02 01:37:59] Transfer summary:
+		-----------------
+		Total files transferred: 4
+		Transfer successfully:   4
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:07
+	4.Import: AzCopy /Z:C:\Users\v-yiqz\AppData\Local\Microsoft\Azure\AzCopy
+	5.Display: [2016/06/02 01:38:59][ERROR] An error occurred while reading the restart journal from "C:\Users\v-yiqz\AppData\Local\Microsoft\Azure\AzCopy". Detailed error: Cannot find valid journal file
+	This example resumes the last operation, which may have failed to complete.
 
 Generate a log file
+	1.Open Microsoft Azure Storage command line
+	2.Import: AzCopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest2 /Dest:http://sdktest2.blob.core.windows.net/test5 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /V
+	3.Display: Finished 4 of total 4 file(s).
+		[2016/06/02 01:57:01] Transfer summary:
+		-----------------
+		Total files transferred: 4
+		Transfer successfully:   4
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:06
+	4.Import: AzCopy /Source:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest /Dest:http://sdktest2.blob.core.windows.net/test6 /DestKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /V:test/azcopy1.log
+	5.Dispaly: [2016/06/02 01:59:16][ERROR] Fail to open verbose log file "test/azcopy1.log": Access to the path 'test' is denied.. AzCopy will not write verbose log in this transferring.
+		Finished 9 of total 9 file(s).
+	[2016/06/02 01:59:24] Transfer summary:
+		-----------------
+		Total files transferred: 9
+		Transfer successfully:   9
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:08
 
+?Specify the number of concurrent operations to start
 
-
-Specify the number of concurrent operations to start
-
-
-
+	azcopy /Source:http://sdktest2.table.core.windows.net/test2 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest3 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /NC
+	[2016/06/02 01:51:10][ERROR] The syntax of the command is incorrect. The "NC" option expects an integer.
 
 3.7 AzCopy Parameters - read these carefully, try every parameter in your command (You may check some articles in Next Steps section), 
     for example: /BlobType, /CheckMD5, /Snapshot, /L, /PKRS, /SplitSize, /Manifest, /EntityOperation, /SyncCopy, /SetContentType, /PayloadFormat, ......
-
+	/BlobType 
+	/CheckMD5 
+	/Snapshot 
+	/L 
+	/PKRS
+	/SplitSize
+	/Manifest
+	/EntityOperation
+	/SyncCopy
+	/SetContentType
+	/PayloadFormat
 
 
 
