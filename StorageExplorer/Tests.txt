@@ -76,7 +76,7 @@ NOTE: Some cases may not valid now until the tool has some feature improvements 
 3.13 Verify that table entities can be listed, import, export, edit, select all, customize columns, filtered, added, get SAS, manage access policy, deleted and refreshed successfully
 	1. Click storage account and select sdktest2
 	2. Click table containers and select the containers had been created
-	3. listed
+	3. Click one table container, display file list successfully
 	4. import
 	5. Click export and select the path and file name then click save, display Exported entities in table 'sdktest2/test2' to 'C:\Users\v-yiqz\Documents\test2.typed.csv' 0 of 0 entities exported successfully
 	6. edit

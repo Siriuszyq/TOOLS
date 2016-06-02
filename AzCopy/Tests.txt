@@ -379,7 +379,7 @@ Import entities to table using blobs
 		Transfer skipped:        0
 		Transfer failed:         3
 		Elapsed time:            00.00:00:05
-BUT use the against public Azure account it successfully
+	BUT use the against public Azure account it successfully
 	10.Import: azcopy /Source:http://jusjinsdkjava.blob.core.windows.net/container1d0be66ffc9d48f0b0e8f122d9400168 /Dest:http://jusjinsdkjava.blob.core.windows.net/container1834a37b6b1e47a9832725982bf93a5a /SourceKey:ebqZSCEJXO11IyBxJKpIG3GZHj37kE+HsRPAWyQnlY8tg3QkLY7ckBQyUjuWoMiKQRlIzGU27kxeJJnNhhpBtQ== /DestKey:ebqZSCEJXO11IyBxJKpIG3GZHj37kE+HsRPAWyQnlY8tg3QkLY7ckBQyUjuWoMiKQRlIzGU27kxeJJnNhhpBtQ== /S /XO
 	11.Display: Finished 1 of total 1 file(s).
 		[2016/05/31 01:52:27] Transfer summary:
@@ -401,12 +401,61 @@ BUT use the against public Azure account it successfully
 		Elapsed time:            00.00:00:01
 
 Use a response file to specify command-line parameters
+	1.Create a new folder and txt file named and the local at "C:\responsefiles\copyoperation.txt"
+	2.Import Azcopy parameter on a single line or on separate lines into "C:\responsefiles\copyoperation.txt":
+		Single Line:
+		/Source:http://sdktest2.blob.core.windows.net/test1 /Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest2 /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /S /Y
+		
+		Separate Lines:
+		/Source:http://sdktest2.blob.core.windows.net/test1 
+		/Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest2 
+		/SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== 
+		/S 
+		/Y
+	3.Open Microsoft Azure Storage command line
+	4.Import: AzCopy /@:"C:\responsefiles\copyoperation.txt"
+	5.Display: 
+		Single Line:
+		Finished 4 of total 4 file(s).
+		[2016/06/01 01:59:10] Transfer summary:
+		-----------------
+		Total files transferred: 4
+		Transfer successfully:   4
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:12
 
-
+		Separate Lines:
+		Finished 4 of total 4 file(s).
+		[2016/06/01 01:50:24] Transfer summary:
+		-----------------
+		Total files transferred: 4
+		Transfer successfully:   4
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:17
 
 Use multiple response files to specify command-line parameters
+	1.Create three new txt file named and the local at "C:\responsefiles\source.txt", "C:\responsefiles\dest.txt" and "C:\responsefiles\options.txt"
+	2.Import Azcopy parameter into "C:\responsefiles\source.txt", "C:\responsefiles\dest.txt" and "C:\responsefiles\options.txt":
+		"C:\responsefiles\source.txt":
+		/Source:http://sdktest2.blob.core.windows.net/test1
 
+		"C:\responsefiles\dest.txt":
+		/Dest:C:\Users\v-yiqz\Documents\GitHub\TOOLS\AzCopy\Tabletest2
 
+		"C:\responsefiles\options.txt":
+		/S /Y
+	3.Open Microsoft Azure Storage command line
+	4.Import: AzCopy /@:"C:\responsefiles\source.txt" /@:"C:\responsefiles\dest.txt" /SourceKey:FjUfNl1KiJttbXlsdkMzBTC7WagvrRM9/g6UPBuy0ypCpAbYTL6/KA+dI/7gyoWvLFYmah3IviUP1jykOHHOlA== /@:"C:\responsefiles\options.txt"
+	5.Display: Finished 4 of total 4 file(s).
+		[2016/06/01 02:09:29] Transfer summary:
+		-----------------
+		Total files transferred: 4
+		Transfer successfully:   4
+		Transfer skipped:        0
+		Transfer failed:         0
+		Elapsed time:            00.00:00:15
 
 Specify a shared access signature (SAS)
 
