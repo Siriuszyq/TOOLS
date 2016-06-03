@@ -540,14 +540,6 @@ Generate a log file
 	/SetContentType
 	/PayloadFormat
 
-
-
-
-
-
-
-
-
 3.8 Run "AzCopy /?" to get help and explore more AzCopy options during test
 
 4. The output should be document about EVERY test steps and commands you run, and their output and results
